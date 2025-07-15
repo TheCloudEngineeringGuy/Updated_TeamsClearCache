@@ -1,5 +1,5 @@
 # Updated_TeamsClearCache
-This script is will help with simple user related issues due to cache. 
+This script is will help with simple user related issues and bugs due to cache. 
 
 I created this script for end users in mind. The vision is to have a Teams Repair icon sit on the user's desktop. When issues or small bugs arrise, the teams repair script will perform the basics
 
