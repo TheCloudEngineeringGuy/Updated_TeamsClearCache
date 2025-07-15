@@ -1,0 +1,47 @@
+
+
+#Define the path to the Teams executable using the provided path
+$teamsPath = "C:\Program Files\WindowsApps\MSTeams_25153.1010.3727.5483_x64__8wekyb3d8bbwe\ms-teams.exe"
+
+#Check if the Teams executable exists
+if (Test-Path $teamsPath) {
+    # Get the Teams process
+    $teamsProcess = Get-Process -Name "ms-teams" -ErrorAction SilentlyContinue
+    if ($teamsProcess) {
+        # Stop the Teams process
+        Stop-Process -Name "ms-teams" -Force
+        Write-Output "Microsoft Teams process has been terminated."
+    } else {
+        Write-Output "Microsoft Teams process is not running."
+    }
+} else {
+    Write-Output "Microsoft Teams is not installed."
+}
+
+#Wait for 5 seconds. Feel free to lower but a delay is needed so the process can end completely.
+Start-Sleep -Seconds 5
+
+
+Write-Output "Please Wait" 
+Write-Output " 
+"
+
+#Define the path to the directory using the logged-in user's profile path
+$path = "$env:USERPROFILE\AppData\Local\Packages\MSTeams_8wekyb3d8bbwe"
+
+#Check if the directory exists
+if (Test-Path $path) {
+    #Remove the directory and its contents
+    Remove-Item -Path $path -Recurse -Force
+    Write-Output "Your Microsoft Teams Cache as been deleted."
+} else {
+    Write-Output "The directory $path does not exist."
+}
+
+
+
+Start-Process -FilePath "C:\Program Files\WindowsApps\MSTeams_25153.1010.3727.5483_x64__8wekyb3d8bbwe\ms-teams.exe"
+
+
+
+
